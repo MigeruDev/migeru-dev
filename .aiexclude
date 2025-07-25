@@ -1,0 +1,69 @@
+# .aiexclude
+#
+# This file specifies files and directories that AI agents should ignore.
+# The syntax is identical to .gitignore.
+#
+# By excluding irrelevant, sensitive, or overly large files, you improve the AI's focus,
+# enhance security, and reduce processing overhead.
+
+# --- Security & Secrets ---
+# NEVER commit or allow AI access to secrets, credentials, or private keys.
+# This is the most critical section.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.yml
+
+# --- Dependencies & Packages ---
+# Exclude third-party code. The AI should focus on your source code, not its dependencies.
+node_modules/
+vendor/
+bower_components/
+
+# --- Lock Files ---
+# Lock files are extremely verbose and not useful for understanding the project's logic.
+# The package.json is sufficient for the AI to understand dependencies.
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# --- Build Artifacts & Compiled Code ---
+# The AI should analyze source code, not compiled or generated output.
+/build/
+/dist/
+/out/
+.next/
+.vercel/
+*.tsbuildinfo
+
+# --- Logs & Temporary Files ---
+# These are runtime files and contain no valuable information for code analysis.
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+*.tmp
+*.swp
+
+# --- IDE & System Files ---
+# These are specific to a developer's local environment and not part of the project's source.
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# --- Large Assets & Binary Files ---
+# Exclude large assets that are not source code to save processing time.
+*.zip
+*.tar.gz
+*.mp4
+*.mov
+*.pdf
+
+# --- Generated TypeScript Declarations ---
+# These are auto-generated and don't need to be read by the AI.
+next-env.d.ts

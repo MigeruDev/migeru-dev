@@ -1,30 +1,34 @@
-import Navigation from '@/components/Navigation';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Projects from '@/components/Projects';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
+import DynamicBackground from "@/components/dynamic-background"
+import { Navigation } from "@/components/layout/navigation"
+import { Footer } from "@/components/layout/footer"
+import { HeroSection } from "@/components/sections/hero/hero-section"
+import { AboutSection } from "@/components/sections/about-section"
+import { ServicesSection } from "@/components/sections/services-section"
+import { ProjectsSection } from "@/components/sections/projects-section"
+import { TestimonialsSection } from "@/components/sections/testimonials-section"
+import { ContactSection } from "@/components/sections/contact-section"
+import { PapersSection } from "@/components/sections/papers-section"
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <main className="min-h-screen">
-      <div 
-        className="fixed inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url('/desktop_background.png')",
-          filter: "blur(1px)",
-        }}
-      />
-      <div className="fixed inset-0 bg-black/70" />
-      
+    <div className="min-h-screen relative">
+      {/* Dynamic Background */}
+      <DynamicBackground />
+
+      {/* Content Overlay */}
       <div className="relative z-10">
         <Navigation />
-        <Hero />
-        <About />
-        <Projects />
-        <Contact />
+        <main>
+          <HeroSection />
+          <AboutSection />
+          <ServicesSection />
+          <ProjectsSection />
+          <PapersSection />
+          <TestimonialsSection />
+          <ContactSection />
+        </main>
         <Footer />
       </div>
-    </main>
-  );
+    </div>
+  )
 }
