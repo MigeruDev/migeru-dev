@@ -1,0 +1,39 @@
+name: CI/CD Pipeline
+
+# Trigger on push or PR targeting the 'develop' branch
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    # Configure the job to run in the 'staging' environment
+    environment: staging
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Simulate Quality Analysis (SonarQube)
+        run: |
+          echo "Starting simulated SonarQube analysis..."
+          echo "Checking HTML, CSS, and JS..."
+          echo "✅ Clean code with no code smells."
+
+      - name: Simulate Unit Tests
+        run: |
+          echo "Running tests..."
+          echo "✅ logic.test.js - PASSED"
+          echo "✅ html.test.js - PASSED"
+
+      - name: Test Secret Exposure (Graded Task)
+        run: |
+          echo "Testing secret access from staging environment..."
+          echo "The secret is: ${{ secrets.API_KEY_RETAIL }}"
+          echo "✅ If you see *** above, the secret is protected."
